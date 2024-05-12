@@ -1,22 +1,39 @@
 import AppLogger from "../../../modules/LoggerModule/AppLogger.js";
 import TwilioSMSNotifications from "../../../modules/SMSNotificationsModule/providers/TwilioSMSNotifications.js";
 import SendGridEmailNotifications from "../../../modules/EmailNotificationsModule/providers/SendGridEmailNotifications.js";
+import PostmarkEmailNotifications from "../../../modules/EmailNotificationsModule/providers/PostmarkEmailNotifications.js";
 
 const FILE_NAME = "[getRootHandler.js]";
 
+const sendConfig = {
+  sendTwilio: true,
+  sendSendGrid: true,
+  sendPostmark: false, // Pending Approval
+};
 
 export default async function getRootHandler(req, res) {
   AppLogger.info(`${FILE_NAME} - Start - Get Root Route Handler`);
 
   // SMS - Twilio
-  const twilioSender = new TwilioSMSNotifications();
-  await twilioSender.send("Hello World");
-  AppLogger.info(`${FILE_NAME} - Message Sent`);
+  if (sendConfig.sendTwilio) {
+    const twilioSender = new TwilioSMSNotifications();
+    await twilioSender.send("Hello World");
+    AppLogger.info(`${FILE_NAME} - SMS Sent`);
+  }
 
   // Email - SendGrid
-  const sendgridSender = new SendGridEmailNotifications()
-  await sendgridSender.send("Hello World");
-  AppLogger.info(`${FILE_NAME} - Email Sent`);
+  if (sendConfig.sendSendGrid) {
+    const sendgridSender = new SendGridEmailNotifications();
+    await sendgridSender.send("Hello World");
+    AppLogger.info(`${FILE_NAME} - Email Sent`);
+  }
+
+  // Email - Postmark
+  if (sendConfig.sendPostmark) {
+    const postmarkSender = new PostmarkEmailNotifications();
+    await postmarkSender.send("Hello World");
+    AppLogger.info(`${FILE_NAME} - Email Sent`);
+  }
 
   return res.json({
     status: "success",
