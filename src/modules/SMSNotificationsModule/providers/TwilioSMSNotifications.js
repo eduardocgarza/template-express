@@ -2,6 +2,7 @@ import twilio from "twilio";
 import AppLogger from "../../LoggerModule/AppLogger.js";
 
 export default class TwilioSMSNotifications {
+  
   constructor() {
     const twilioAccountSID = process.env.TWILIO_ACCOUNT_SID;
     const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;

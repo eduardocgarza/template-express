@@ -6,7 +6,7 @@ const FILE_NAME = "[PostmarkEmailNotifications.js]";
 export default class PostmarkEmailNotifications {
   static SUBJECT = "App Notification";
 
-  constructor(postmarkClient) {
+  constructor() {
     const serverAPIToken = process.env.POSTMARK_SERVER_API_TOKEN;
 
     if (!serverAPIToken) {
