@@ -1,5 +1,5 @@
 import mysql from "mysql";
-import MYSQL_CONFIG from "../config/mySQLConfig.js";
+import MYSQL_CONFIG from "../config/credentials/mySQLConfig.js";
 
 export default class MySQL2Client {
   constructor() {

@@ -1,5 +1,5 @@
 import pg from "pg";
-import POSTGRES_CONFIG from "../config/postgresConfig.js";
+import POSTGRES_CONFIG from "../config/credentials/postgresConfig.js";
 
 const { Client } = pg;
 

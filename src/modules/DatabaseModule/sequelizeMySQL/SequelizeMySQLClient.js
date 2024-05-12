@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import MYSQL_CONFIG from "../config/mySQLConfig.js";
+import MYSQL_CONFIG from "../config/credentials/mySQLConfig.js";
 
 export default class SequelizeMySQLClient {
     constructor() {

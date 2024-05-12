@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import POSTGRES_CONFIG from "../config/postgresConfig.js";
+import POSTGRES_CONFIG from "../config/credentials/postgresConfig.js";
 
 export default class SequelizePostgresClient {
     constructor() {

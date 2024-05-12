@@ -1,5 +1,5 @@
 import pgPromise from 'pg-promise';
-import POSTGRES_CONFIG from "../config/postgresConfig.js";
+import POSTGRES_CONFIG from "../config/credentials/postgresConfig.js";
 
 const pgp = pgPromise();
 

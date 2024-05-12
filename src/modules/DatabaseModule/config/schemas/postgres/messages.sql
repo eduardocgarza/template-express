@@ -1,0 +1,8 @@
+CREATE TABLE messages (
+    id SERIAL PRIMARY KEY,
+    message TEXT,
+    account_id INTEGER,
+    date_created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    last_modified TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE
+);

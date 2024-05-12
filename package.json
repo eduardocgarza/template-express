@@ -25,6 +25,8 @@
   "homepage": "https://github.com/eduardocgarza/template-express#readme",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "bunyan": "^1.8.15",
+    "cls-hooked": "^4.2.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
@@ -38,7 +40,10 @@
     "mysql2": "^3.9.7",
     "pg": "^8.11.5",
     "pg-promise": "^11.6.0",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "uuid": "^9.0.1",
+    "winston": "^3.13.0",
+    "winston-papertrail": "github:kenperkins/winston-papertrail#v2"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
