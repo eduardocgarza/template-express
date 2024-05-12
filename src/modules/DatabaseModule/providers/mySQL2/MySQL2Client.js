@@ -1,7 +1,7 @@
 import mysql from "mysql";
-import MYSQL_CONFIG from "../config/credentials/mySQLConfig.js";
+import MYSQL_CONFIG from "../../config/credentials/mySQLConfig.js";
 
-export default class MySQLClient {
+export default class MySQL2Client {
   constructor() {
     this.pool = mysql.createPool({
       connectionLimit: 8,

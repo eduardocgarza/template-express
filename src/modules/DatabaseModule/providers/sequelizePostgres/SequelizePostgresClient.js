@@ -1,11 +1,11 @@
 import { Sequelize } from "sequelize";
-import MYSQL_CONFIG from "../config/credentials/mySQLConfig.js";
+import POSTGRES_CONFIG from "../../config/credentials/postgresConfig.js";
 
-export default class SequelizeMySQLClient {
+export default class SequelizePostgresClient {
     constructor() {
         this.sequelize = new Sequelize({
-            ...MYSQL_CONFIG,
-            dialect: "mysql",
+            ...POSTGRES_CONFIG,
+            dialect: "postgres",
         });
     }
 

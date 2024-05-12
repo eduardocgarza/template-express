@@ -1,9 +1,9 @@
-import PgClient from "../../../modules/DatabaseModule/pg/PgClient.js";
-import MySQLClient from "../../../modules/DatabaseModule/mySQL/MySQLClient.js";
-import MySQL2Client from "../../../modules/DatabaseModule/mySQL2/MySQL2Client.js";
-import PgPromiseClient from "../../../modules/DatabaseModule/pgPromise/PgPromiseClient.js";
-import SequelizeMySQLClient from "../../../modules/DatabaseModule/sequelizeMySQL/SequelizeMySQLClient.js";
-import SequelizePostgresClient from "../../../modules/DatabaseModule/sequelizePostgres/SequelizePostgresClient.js";
+import PgClient from "../../../modules/DatabaseModule/providers/pg/PgClient.js";
+import MySQLClient from "../../../modules/DatabaseModule/providers/mySQL/MySQLClient.js";
+import MySQL2Client from "../../../modules/DatabaseModule/providers/mySQL2/MySQL2Client.js";
+import PgPromiseClient from "../../../modules/DatabaseModule/providers/pgPromise/PgPromiseClient.js";
+import SequelizeMySQLClient from "../../../modules/DatabaseModule/providers/sequelizeMySQL/SequelizeMySQLClient.js";
+import SequelizePostgresClient from "../../../modules/DatabaseModule/providers/sequelizePostgres/SequelizePostgresClient.js";
 
 
 export default async function getStatusHandler(req, res) {

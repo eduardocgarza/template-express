@@ -1,7 +1,7 @@
 import twilio from "twilio";
-import AppLogger from "../LoggerModule/AppLogger.js";
+import AppLogger from "../../LoggerModule/AppLogger.js";
 
-export default class SMSNotifications {
+export default class TwilioSMSNotifications {
   constructor() {
     const twilioAccountSID = process.env.TWILIO_ACCOUNT_SID;
     const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
@@ -18,7 +18,7 @@ export default class SMSNotifications {
     );
   }
 
-  async sendSMS(message) {
+  async send(message) {
     try {
       const response = await this.client.messages.create({
         body: message,
