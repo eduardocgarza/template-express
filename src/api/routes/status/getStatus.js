@@ -1,17 +1,56 @@
-import PostgresClient from "../../../modules/DatabaseModule/pg/PostgresClient.js";
+import PgClient from "../../../modules/DatabaseModule/pg/PgClient.js";
+import MySQLClient from "../../../modules/DatabaseModule/mySQL/MySQLClient.js";
+import MySQL2Client from "../../../modules/DatabaseModule/mySQL2/MySQL2Client.js";
+import PgPromiseClient from "../../../modules/DatabaseModule/pgPromise/PgPromiseClient.js";
+import SequelizeMySQLClient from "../../../modules/DatabaseModule/sequelizeMySQL/SequelizeMySQLClient.js";
+import SequelizePostgresClient from "../../../modules/DatabaseModule/sequelizePostgres/SequelizePostgresClient.js";
 
 
 export default async function getStatusHandler(req, res) {
-    let connection;
+    let pgClient, 
+        pgPromiseClient, 
+        mySQLClient, 
+        mySQL2Client, 
+        sequelizeSQLClient,
+        sequelizePostgresClient;
 
     try {
-        connection = new PostgresClient();
-        await connection.connect();
-        const result = await connection.client.query("SELECT VERSION();");
+        // Example 1 - Package = "pg"
+        pgClient = new PgClient();
+        await pgClient.connect();
+        const pgResults = await pgClient.query("SELECT VERSION();");
+
+        // Example 2 - Package = "pg-promise"
+        pgPromiseClient = new PgPromiseClient();
+        const pgPromiseResults = await pgPromiseClient.query("SELECT VERSION();");
+
+
+        // Example 3 - Package = "mysql"
+        mySQLClient = new MySQLClient();
+        const mySQLResults = await mySQLClient.query("SELECT VERSION();")
+
+        // Example 4 - Package = "mysql2"
+        mySQL2Client = new MySQL2Client();
+        const mySQL2Results = await mySQL2Client.query("SELECT VERSION();")
+
+        // // Example 5 - Package = "sequelize" - MySQL
+        // sequelizeSQLClient = new SequelizeMySQLClient();
+        // const sequelizeSQLResults = await sequelizeSQLClient.query("SELECT VERSION();")
+        
+        // // Example 6 - Package = "sequelize" - Postgres
+        // sequelizePostgresClient = new SequelizePostgresClient();
+        // const sequelizePostgresResults = await sequelizePostgresClient.query("SELECT VERSION();")
 
         return res.json({
             status: "success",
-            data: result.rows
+            results: {
+                pg: pgResults.rows,
+                pgPromise: pgPromiseResults,
+                mySQL: mySQLResults,
+                mySQL2: mySQL2Results,
+                // sequelizeSQL: sequelizeSQLResults,
+                // sequelizePostgres: sequelizePostgresResults
+            }
         })
         
     }
@@ -19,8 +58,20 @@ export default async function getStatusHandler(req, res) {
         console.log(error)
     }
     finally {
-        if (connection) {
-            await connection.disconnect();
+        if (pgClient) {
+            await pgClient.disconnect();
         }
+        if (pgPromiseClient) {
+            await pgPromiseClient.disconnect();
+        }
+
+        // if (sequelizeSQLClient) {
+        //     await sequelizeSQLClient.disconnect();
+        // }
+
+        // if (sequelizePostgresClient) {
+        //     await sequelizePostgresClient.disconnect();
+        // }
+
     }
 }
