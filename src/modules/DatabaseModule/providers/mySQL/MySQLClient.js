@@ -19,7 +19,7 @@ export default class MySQLClient {
   }
 
   // Generic query method
-  async query(sql, values) {
+  async query(sql, values = []) {
     return new Promise((resolve, reject) => {
       this.pool.query(sql, values, (err, results) => {
         if (err) reject(err);
