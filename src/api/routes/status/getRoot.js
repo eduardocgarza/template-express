@@ -7,10 +7,10 @@ import AmazonSESEmailNotifications from "../../../modules/EmailNotificationsModu
 const FILE_NAME = "[getRootHandler.js]";
 
 const sendConfig = {
-  sendTwilio: true,
-  sendSendGrid: true,
+  sendTwilio: false,
+  sendSendGrid: false,
   sendPostmark: false, // Pending Approval
-  sendAmazon: true
+  sendAmazon: false
 };
 
 export default async function getRootHandler(req, res) {
